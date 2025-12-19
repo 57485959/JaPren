@@ -35,7 +35,6 @@ class PresensiActivity : AppCompatActivity() {
             myRef.push().setValue(presensiData)
                 .addOnSuccessListener {
                     Toast.makeText(this, "Data tersimpan di Firebase!", Toast.LENGTH_SHORT).show()
-                    // Setelah data tersimpan, baru pindah ke Maps
                     startActivity(Intent(this, MapsPresensiActivity::class.java))
                 }
                 .addOnFailureListener {
