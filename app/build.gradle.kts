@@ -1,7 +1,6 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
-    id("com.google.gms.google-services")
 }
 
 android {
@@ -39,9 +38,6 @@ android {
 }
 
 dependencies {
-    implementation("org.osmdroid:osmdroid-android:6.1.18")
-    implementation("com.google.firebase:firebase-database-ktx:20.3.0")
-
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
