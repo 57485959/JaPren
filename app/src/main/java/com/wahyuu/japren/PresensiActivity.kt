@@ -35,12 +35,12 @@ class PresensiActivity : AppCompatActivity() {
 
             myRef.push().setValue(presensiData)
                 .addOnSuccessListener {
-                    Toast.makeText(this, "Data tersimpan di Firebase!", Toast.LENGTH_SHORT).show()
-                    // Setelah data tersimpan, baru pindah ke Maps
-                    startActivity(Intent(this, MapsPresensiActivity::class.java))
+                    Toast.makeText(this, "Presensi Berhasil!!", Toast.LENGTH_SHORT).show()
+                    finish()
+                    //startActivity(Intent(this, MapsPresensiActivity::class.java))
                 }
                 .addOnFailureListener {
-                    Toast.makeText(this, "Gagal simpan data: ${it.message}", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Gagal simpan data!!", Toast.LENGTH_SHORT).show()
                 }
         }
     }
