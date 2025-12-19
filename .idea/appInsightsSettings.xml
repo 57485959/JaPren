@@ -8,10 +8,10 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="PLACEHOLDER" />
-                  <option name="mobileSdkAppId" value="" />
-                  <option name="projectId" value="" />
-                  <option name="projectNumber" value="" />
+                  <option name="appId" value="com.wahyuu.japren" />
+                  <option name="mobileSdkAppId" value="1:335300759378:android:d4c0dea9dc88d011a1f48b" />
+                  <option name="projectId" value="japren-749fa" />
+                  <option name="projectNumber" value="335300759378" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />

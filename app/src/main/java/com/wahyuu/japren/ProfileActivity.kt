@@ -14,8 +14,8 @@ class ProfileActivity : AppCompatActivity() {
 
         val btnKeluar = findViewById<MaterialButton>(R.id.btnKeluar)
         btnKeluar.setOnClickListener {
-            startActivity(Intent(this, LoginActivity::class.java))
-            finishAffinity() // logout bersih
+            val dialog = DialogValidasiLogout()
+            dialog.show(supportFragmentManager, "DialogLogout")
         }
 
         val bottomNav = findViewById<BottomNavigationView>(R.id.bottomNav)

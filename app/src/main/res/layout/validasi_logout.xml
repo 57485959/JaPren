@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="280dp"
+    android:orientation="vertical"
+    android:background="@drawable/bg_dialog_buttom"
+    android:paddingTop="40dp">
+
+
+    <TextView
+        android:id="@+id/tvTittleVerifikasi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Yakin Keluar?"
+        android:textSize="18sp"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:layout_marginBottom="25dp"/>
+
+    <Button
+        android:id="@+id/btnAgreeLO"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:text="Ya, Keluar"
+        android:layout_marginBottom="10dp"
+        android:textSize="18sp"
+        android:backgroundTint="@color/red"
+        android:layout_gravity="center_horizontal"/>
+
+    <Button
+        android:id="@+id/btnCancelLO"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:text="Batal"
+        android:textSize="18sp"
+        android:backgroundTint="@color/soft_blue"
+        android:layout_gravity="center_horizontal"/>
+
+</LinearLayout>
