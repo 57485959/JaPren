@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "335300759378",
+    "firebase_url": "https://japren-749fa-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "japren-749fa",
+    "storage_bucket": "japren-749fa.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:335300759378:android:d4c0dea9dc88d011a1f48b",
+        "android_client_info": {
+          "package_name": "com.wahyuu.japren"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBCRAC82lQsVQ5aekLHU-c9MJZkWzUBWp4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
