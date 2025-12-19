@@ -31,12 +31,16 @@
             android:layout_marginStart="12dp">
 
             <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:text="Halo, Nama Pengguna"
                 android:textStyle="bold"
                 android:textSize="14sp"
                 android:textColor="#000"/>
 
             <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:text="TEKNIK INFORMATIKA"
                 android:textSize="12sp"
                 android:textColor="#666"/>
@@ -62,12 +66,16 @@
             android:orientation="vertical">
 
             <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:text="JaPren"
                 android:textSize="28sp"
                 android:textStyle="bold"
                 android:textColor="#FFFFFF"/>
 
             <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:text="Sekali tap, Beres!"
                 android:textSize="14sp"
                 android:textColor="#FFFFFF"/>
@@ -93,6 +101,8 @@
             app:cardCornerRadius="16dp">
 
             <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="Presensi Hari Ini✔"
                 android:textStyle="bold"
@@ -107,6 +117,8 @@
             app:cardCornerRadius="16dp">
 
             <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="Status : Hadir\nTepat Waktu"
                 android:gravity="center"/>
