@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <?xml version="1.0" encoding="utf-8"?>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/grey">
+
+        <!-- HEADER BIRU -->
+        <View
+            android:id="@+id/headerBlue"
+            android:layout_width="0dp"
+            android:layout_height="180dp"
+            android:background="@color/blue"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <!-- LOGO / AVATAR -->
+        <ImageView
+            android:id="@+id/imgMascot"
+            android:layout_width="175dp"
+            android:layout_height="175dp"
+            android:layout_marginEnd="4dp"
+            android:src="@drawable/ic_maskot_japren"
+            app:layout_constraintBottom_toBottomOf="@id/headerBlue"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/headerBlue"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <ImageView
+            android:id="@+id/imgAvatar"
+            android:layout_width="85dp"
+            android:layout_height="85dp"
+            android:src="@drawable/ic_logo_japren"
+            android:background="@drawable/bg_circle_white"
+            android:padding="12dp"
+            app:layout_constraintTop_toBottomOf="@id/headerBlue"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="-45dp"/>
+
+        <!-- NAMA -->
+        <TextView
+            android:id="@+id/txtName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nama Mahasiswa"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_marginTop="12dp"
+            app:layout_constraintTop_toBottomOf="@id/imgAvatar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+
+        <!-- PROFIL TITLE -->
+        <TextView
+            android:id="@+id/txtProfil"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Profil"x
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:layout_marginTop="32dp"
+            android:layout_marginStart="24dp"
+            app:layout_constraintTop_toBottomOf="@id/txtName"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <!-- NAMA -->
+        <TextView
+            android:id="@+id/labelNama"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nama :"
+            android:textSize="16sp"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="24dp"
+            app:layout_constraintTop_toBottomOf="@id/txtProfil"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <TextView
+            android:id="@+id/valueNama"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nama Mahasiswa"
+            android:textColor="#A0A0A0"
+            android:textSize="14sp"
+            android:layout_marginTop="4dp"
+            android:layout_marginStart="24dp"
+            app:layout_constraintTop_toBottomOf="@id/labelNama"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <!-- NIP -->
+        <TextView
+            android:id="@+id/labelNim"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="NIM :"
+            android:textSize="16sp"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="24dp"
+            app:layout_constraintTop_toBottomOf="@id/valueNama"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <TextView
+            android:id="@+id/valueNim"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2300018000"
+            android:textColor="#A0A0A0"
+            android:textSize="14sp"
+            android:layout_marginTop="4dp"
+            android:layout_marginStart="24dp"
+            app:layout_constraintTop_toBottomOf="@id/labelNim"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <!-- UNIT -->
+        <TextView
+            android:id="@+id/labelProdi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Prodi :"
+            android:textSize="16sp"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="24dp"
+            app:layout_constraintTop_toBottomOf="@id/valueNim"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <TextView
+            android:id="@+id/valueProdi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pogram Studi Mahasiswa"
+            android:textColor="#A0A0A0"
+            android:textSize="14sp"
+            android:layout_marginTop="4dp"
+            android:layout_marginStart="24dp"
+            app:layout_constraintTop_toBottomOf="@id/labelProdi"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <!-- BUTTON KELUAR -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnKeluar"
+            android:layout_width="0dp"
+            android:layout_height="52dp"
+            android:text="Keluar"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/red"
+            app:cornerRadius="12dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginTop="45dp"
+            app:layout_constraintTop_toBottomOf="@id/valueProdi"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
