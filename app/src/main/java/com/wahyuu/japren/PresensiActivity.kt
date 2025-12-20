@@ -5,9 +5,11 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.button.MaterialButton
-import com.google.firebase.database.FirebaseDatabase
-
+import com.google.android.material.tabs.TabLayout
+import com.google.firebase.database.*
 
 class PresensiActivity : AppCompatActivity() {
 
@@ -15,34 +17,61 @@ class PresensiActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_presensi)
 
-        val database = FirebaseDatabase.getInstance("https://japren-749fa-default-rtdb.asia-southeast1.firebasedatabase.app/")
-        val myRef = database.getReference("presensi_log")
-
         // Toolbar back
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         toolbar.setNavigationOnClickListener {
             finish()
         }
 
-        // tombol presensi -> MAPS
+        // RecyclerView
+        val rvPresensi = findViewById<RecyclerView>(R.id.rvPresensi)
+        rvPresensi.layoutManager = LinearLayoutManager(this)
+
+        val listPresensi = mutableListOf<Presensi>()
+        val adapter = PresensiAdapter(listPresensi)
+        rvPresensi.adapter = adapter
+
+        // Firebase
+        val database = FirebaseDatabase.getInstance(
+            "https://japren-749fa-default-rtdb.asia-southeast1.firebasedatabase.app/"
+        )
+        val ref = database.getReference("presensi_log")
+
+        ref.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                listPresensi.clear()
+                for (data in snapshot.children) {
+                    val presensi = data.getValue(Presensi::class.java)
+                    if (presensi != null) {
+                        listPresensi.add(presensi)
+                    }
+                }
+                adapter.notifyDataSetChanged()
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Toast.makeText(this@PresensiActivity, "Gagal ambil data", Toast.LENGTH_SHORT).show()
+            }
+        })
+
+        // Tambahkan ini di bawah inisialisasi TabLayout di PresensiActivity.kt
+        val tabLayout = findViewById<TabLayout>(R.id.tabLayout)
+        tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+            override fun onTabSelected(tab: TabLayout.Tab?) {
+                if (tab?.position == 1) { // Jika klik tab 'Rekap'
+                    val intent = Intent(this@PresensiActivity, RekapPresensiActivity::class.java)
+                    startActivity(intent)
+                    overridePendingTransition(0, 0) // Transisi mulus
+                }
+            }
+            override fun onTabUnselected(tab: TabLayout.Tab?) {}
+            override fun onTabReselected(tab: TabLayout.Tab?) {}
+        })
+
+        // Tombol ke MAP
         val btnPresensi = findViewById<MaterialButton>(R.id.btnPresensi)
         btnPresensi.setOnClickListener {
-            startActivity(Intent(this, MapsPresensiActivity::class.java))
-            val presensiData = mapOf(
-                "userId" to "user_wahyu",
-                "status" to "Hadir",
-                "timestamp" to System.currentTimeMillis()
-            )
-
-            myRef.push().setValue(presensiData)
-                .addOnSuccessListener {
-                    Toast.makeText(this, "Presensi Berhasil!!", Toast.LENGTH_SHORT).show()
-                    finish()
-                    //startActivity(Intent(this, MapsPresensiActivity::class.java))
-                }
-                .addOnFailureListener {
-                    Toast.makeText(this, "Gagal simpan data!!", Toast.LENGTH_SHORT).show()
-                }
+            startActivity(android.content.Intent(this, MapsPresensiActivity::class.java))
         }
     }
 }

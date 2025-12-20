@@ -1,7 +1,8 @@
 package com.wahyuu.japren
 
-class Presensi (
-    val userId: String? = null,
-    val status: String? = null,
-    val timestamp: Long? = null
+data class Presensi(
+    val userId: String = "",
+    val status: String = "",
+    val timestamp: Long = 0,
+    val date: String = ""
 )

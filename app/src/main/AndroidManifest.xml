@@ -41,6 +41,11 @@
             android:name=".MapsPresensiActivity"
             android:exported="false" />
 
+        <!-- REKAP PRESENSI -->
+        <activity
+            android:name=".RekapPresensiActivity"
+            android:exported="false" />
+
         <!-- PROFILE -->
         <activity
             android:name=".ProfileActivity"

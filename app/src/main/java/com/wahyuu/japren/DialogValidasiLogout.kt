@@ -19,19 +19,18 @@ class DialogValidasiLogout : DialogFragment() {
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         dialog.setContentView(R.layout.validasi_logout)
 
-        // Membuat background dialog asli menjadi transparan agar rounded corner di XML terlihat
         dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
 
         val btnAgree = dialog.findViewById<Button>(R.id.btnAgreeLO)
         val btnCancel = dialog.findViewById<Button>(R.id.btnCancelLO)
-
+        // Tombol Ya, Keluar
         btnAgree.setOnClickListener {
             val intent = Intent(requireContext(), LoginActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(intent)
             dismiss()
         }
-
+        // Tombol Batal
         btnCancel.setOnClickListener {
             dismiss()
         }
@@ -52,15 +51,11 @@ class DialogValidasiLogout : DialogFragment() {
             params.width = ViewGroup.LayoutParams.MATCH_PARENT
             params.height = ViewGroup.LayoutParams.WRAP_CONTENT
 
-            // 3. Mengatur kegelapan background (0.0 sampai 1.0)
-            // Semakin tinggi nilainya, semakin gelap/redup
+            // 3. Mengatur kegelapan background (0.0 sampai 1.0)  makin tinggi makin gelap/redup
             params.dimAmount = 0.7f
             window.addFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND)
 
             window.attributes = params
-
-            // Opsional: Animasi muncul dari bawah
-            // window.windowAnimations = android.R.style.Animation_InputMethod
         }
     }
 }
