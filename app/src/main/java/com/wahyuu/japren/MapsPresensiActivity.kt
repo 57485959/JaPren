@@ -30,8 +30,8 @@ class MapsPresensiActivity : AppCompatActivity() {
 
     private lateinit var fusedLocationClient: FusedLocationProviderClient
 
-    private val kampusLat = -7.740833
-    private val kampusLng = 110.264139
+    private val kampusLat = -7.835820
+    private val kampusLng = 110.383891
     private val radiusMeter = 200.0
     private var isInsideRadius = false
 
@@ -166,7 +166,7 @@ class MapsPresensiActivity : AppCompatActivity() {
 
         val presensiBaru = Presensi(
             userId = "user_wahyu", // Ganti dengan ID pengguna yang sebenarnya
-            status = "Hadir Tepat Waktu",
+            status = "Hadir",
             timestamp = System.currentTimeMillis(),
             date = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(Date())
         )

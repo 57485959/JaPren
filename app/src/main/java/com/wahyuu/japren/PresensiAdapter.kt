@@ -14,8 +14,8 @@ class PresensiAdapter (
     ) : RecyclerView.Adapter<PresensiAdapter.ViewHolder>() {
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         // untuk item_riwayat.xml
-        val txtStatus: TextView = view.findViewById(R.id.txtStatus)
-        val txtWaktu: TextView = view.findViewById(R.id.txtWaktu)
+        val txtStatus: TextView? = view.findViewById(R.id.txtStatus)
+        val txtWaktu: TextView? = view.findViewById(R.id.txtWaktu)
 
         // untuk item_presensi.xml
         val tvStatusItem: TextView? = view.findViewById(R.id.tvStatusItem)
