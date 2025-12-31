@@ -4,8 +4,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F5F5F5">
+    android:background="@color/white">
 
+    <!-- TOOLBAR -->
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="0dp"
@@ -17,37 +18,38 @@
         app:navigationIcon="@drawable/ic_back"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:elevation="0dp"/>
+        app:layout_constraintEnd_toEndOf="parent"/>
 
+    <!-- TAB -->
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayout"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/toolbar"
         android:background="@android:color/white"
+        app:backgroundTint="@android:color/white"
         app:tabIndicatorColor="@color/sky_blue"
         app:tabIndicatorHeight="3dp"
         app:tabSelectedTextColor="@color/black"
         app:tabTextColor="@android:color/darker_gray"
-        app:tabIndicatorFullWidth="false">
+        app:tabTextAppearance="@style/TextAppearance.AppCompat.Body1"
+        app:tabIndicatorFullWidth="false"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
         <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Presensi GPS" />
+            android:text="Presensi GPS"/>
 
         <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Rekap" />
+            android:text="Rekap"/>
 
     </com.google.android.material.tabs.TabLayout>
 
-    <!-- Content -->
+    <!-- CONTENT -->
     <androidx.core.widget.NestedScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:fillViewport="true"
         app:layout_constraintTop_toBottomOf="@id/tabLayout"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -57,7 +59,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="16dp">
+            android:padding="8dp">
 
             <!-- Pilih Semester -->
             <TextView
@@ -66,27 +68,25 @@
                 android:text="Pilih Semester"
                 android:textStyle="bold"
                 android:textSize="13sp"
-                android:textColor="@color/soft_black"
+                android:textColor="@color/black"
                 android:layout_marginBottom="8dp"/>
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="2dp"
-                android:layout_marginBottom="16dp">
+                app:cardBackgroundColor="@color/white">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="12dp"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical">
+                    android:padding="12dp">
 
                     <TextView
                         android:id="@+id/tvSemester"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Gasal 2023/2024"
                         android:textSize="12sp"
@@ -94,13 +94,13 @@
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-            <!-- List Matkul -->
+            <!-- LIST MATKUL -->
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvMatkul"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:nestedScrollingEnabled="false"
-                android:clipToPadding="false"/>
+                android:overScrollMode="never"/>
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

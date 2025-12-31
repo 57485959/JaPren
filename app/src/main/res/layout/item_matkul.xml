@@ -6,7 +6,7 @@
     app:cardCornerRadius="16dp"
     app:cardElevation="4dp"
     app:cardUseCompatPadding="true"
-    android:layout_margin="8dp">
+    android:paddingTop="5dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -21,6 +21,7 @@
             android:layout_weight="1"
             android:orientation="vertical">
             <TextView
+                android:id="@+id/tvNamaMatkul"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Nama Mata Kuliah"
@@ -28,6 +29,7 @@
                 android:textSize="13sp"
                 android:textColor="@color/soft_black" />
             <TextView
+                android:id="@+id/tvNamaDosen"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Nama Dosen Pengampu"
@@ -50,8 +52,10 @@
                 android:textColor="@color/grey"
                 android:layout_gravity="center_horizontal"/>
             <TextView
+                android:id="@+id/tvSks"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
                 android:text="[nilai]"
                 android:textColor="@color/soft_blue"
                 android:textStyle="bold"
@@ -72,6 +76,8 @@
                 android:textColor="@color/grey"
                 android:layout_gravity="center_horizontal"/>
             <TextView
+                android:id="@+id/tvKelas"
+                android:layout_gravity="center_horizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="[A/B/C]"
