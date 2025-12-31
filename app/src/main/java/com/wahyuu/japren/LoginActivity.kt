@@ -50,6 +50,17 @@ class LoginActivity : AppCompatActivity() {
 
                                 if (dbPassword == password) {
                                     // LOGIN BERHASIL
+                                    val nama = snapshot.child("nama").value.toString()
+                                    val nim = snapshot.child("nim").value.toString()
+                                    val prodi = snapshot.child("prodi").value.toString()
+
+                                    val prefs = getSharedPreferences("USER_PREF", MODE_PRIVATE)
+                                    val editor = prefs.edit()
+                                    editor.putString("NIM", nim)
+                                    editor.putString("NAMA", nama)
+                                    editor.putString("PRODI", prodi)
+                                    editor.apply()
+
                                     startActivity(
                                         Intent(this@LoginActivity, MainActivity::class.java)
                                     )

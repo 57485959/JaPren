@@ -2,6 +2,7 @@ package com.wahyuu.japren
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -15,6 +16,13 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val bottomNav = findViewById<BottomNavigationView>(R.id.bottomNav)
+
+        val txtGreeting = findViewById<TextView>(R.id.txtGreeting)
+
+        val prefs = getSharedPreferences("USER_PREF", MODE_PRIVATE)
+        val nama = prefs.getString("NAMA", "Pengguna")
+
+        txtGreeting.text = "Halo, $nama"
 
         bottomNav.setOnItemSelectedListener { item ->
             when (item.itemId) {

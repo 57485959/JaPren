@@ -31,6 +31,7 @@
             android:layout_marginStart="12dp">
 
             <TextView
+                android:id="@+id/txtGreeting"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Halo, Nama Pengguna"
@@ -92,43 +93,6 @@
         app:layout_constraintTop_toBottomOf="@id/cardBanner"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="0dp"
-            android:layout_height="100dp"
-            android:layout_weight="1"
-            android:layout_marginEnd="8dp"
-            app:cardCornerRadius="16dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="5dp"
-            app:cardBackgroundColor="@color/cream">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="Presensi Hari Ini✔"
-                android:textStyle="bold"
-                android:gravity="center"/>
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="0dp"
-            android:layout_height="100dp"
-            android:layout_weight="1"
-            android:layout_marginStart="8dp"
-            app:cardCornerRadius="16dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="5dp"
-            app:cardBackgroundColor="@color/gcream">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="Status : Hadir\nTepat Waktu"
-                android:gravity="center"/>
-        </androidx.cardview.widget.CardView>
     </LinearLayout>
 
     <TextView
