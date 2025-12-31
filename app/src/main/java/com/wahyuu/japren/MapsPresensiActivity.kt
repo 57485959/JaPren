@@ -30,8 +30,8 @@ class MapsPresensiActivity : AppCompatActivity() {
 
     private lateinit var fusedLocationClient: FusedLocationProviderClient
 
-    private val kampusLat = -7.835820
-    private val kampusLng = 110.383891
+    private val kampusLat = -7.831423
+    private val kampusLng = 110.381467
     private val radiusMeter = 200.0
     private var isInsideRadius = false
 

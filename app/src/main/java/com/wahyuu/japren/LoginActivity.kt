@@ -6,6 +6,10 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 
 class LoginActivity : AppCompatActivity() {
 
@@ -17,6 +21,12 @@ class LoginActivity : AppCompatActivity() {
         val edtPassword = findViewById<TextInputEditText>(R.id.edtPassword)
         val btnMasuk = findViewById<MaterialButton>(R.id.btnMasuk)
 
+        val database = FirebaseDatabase.getInstance(
+            "https://japren-749fa-default-rtdb.asia-southeast1.firebasedatabase.app/"
+        )
+        val ref = database.getReference("users")
+
+
         btnMasuk.setOnClickListener {
             val username = edtUsername.text.toString().trim()
             val password = edtPassword.text.toString().trim()
@@ -24,13 +34,51 @@ class LoginActivity : AppCompatActivity() {
             if (username.isEmpty() || password.isEmpty()) {
                 Toast.makeText(
                     this,
-                    "Username dan password wajib diisi",
+                    "Username dan password wajib diisi!!",
                     Toast.LENGTH_SHORT
                 ).show()
             } else {
-                // LOGIN DUMMY
-                startActivity(Intent(this, MainActivity::class.java))
-                finish()
+
+                ref.child(username)
+                    .addListenerForSingleValueEvent(object : ValueEventListener {
+
+                        override fun onDataChange(snapshot: DataSnapshot) {
+                            if (snapshot.exists()) {
+
+                                val dbPassword =
+                                    snapshot.child("password").value.toString()
+
+                                if (dbPassword == password) {
+                                    // LOGIN BERHASIL
+                                    startActivity(
+                                        Intent(this@LoginActivity, MainActivity::class.java)
+                                    )
+                                    finish()
+                                } else {
+                                    Toast.makeText(
+                                        this@LoginActivity,
+                                        "Password salah",
+                                        Toast.LENGTH_SHORT
+                                    ).show()
+                                }
+
+                            } else {
+                                Toast.makeText(
+                                    this@LoginActivity,
+                                    "Username tidak ditemukan",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            }
+                        }
+
+                        override fun onCancelled(error: DatabaseError) {
+                            Toast.makeText(
+                                this@LoginActivity,
+                                "Gagal login",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                    })
             }
         }
     }
