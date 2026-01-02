@@ -15,26 +15,34 @@
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
+        <!-- Nomor Pertemuan -->
         <TextView
+            android:id="@+id/tvPertemuan"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="1"
             android:layout_marginEnd="12dp"
-            android:textColor="#2C3E50" />
+            android:textColor="#2C3E50"
+            android:textStyle="bold"/>
 
+        <!-- Tanggal & Dosen -->
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:orientation="vertical">
+
             <TextView
+                android:id="@+id/tvTanggal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Hari, Tanggal Bulan Tahun"
                 android:textStyle="bold"
                 android:textSize="13sp"
                 android:textColor="@color/soft_black" />
+
             <TextView
+                android:id="@+id/tvDosen"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Nama Dosen Pengampu"
@@ -42,18 +50,23 @@
                 android:textSize="11sp" />
         </LinearLayout>
 
+        <!-- Status -->
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="end"
             android:orientation="vertical">
+
             <TextView
+                android:id="@+id/tvStatusLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Status"
                 android:textSize="10sp"
                 android:textColor="@color/grey" />
+
             <TextView
+                android:id="@+id/tvStatus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Hadir"
@@ -61,6 +74,7 @@
                 android:textStyle="bold"
                 android:textSize="12sp" />
         </LinearLayout>
+
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>

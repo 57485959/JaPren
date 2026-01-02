@@ -13,8 +13,9 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="16dp"
-        android:background="#FFFFFF">
+        android:background="@color/white">
 
+        <!-- HEADER -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -37,6 +38,7 @@
                 android:textStyle="bold" />
         </LinearLayout>
 
+        <!-- INFO MATKUL -->
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -52,7 +54,9 @@
                 android:padding="16dp"
                 android:background="@color/bgAbu">
 
+                <!-- NAMA MATKUL -->
                 <TextView
+                    android:id="@+id/tvNamaMatkul"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Nama Mata Kuliah"
@@ -60,14 +64,17 @@
                     android:textSize="14sp"
                     android:textStyle="bold" />
 
+                <!-- INFO KELAS & SKS -->
                 <TextView
+                    android:id="@+id/tvInfoMatkul"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Kelas [A/B/C]• [Besar] SKS"
+                    android:text="Kelas A • 3 SKS"
                     android:textColor="@color/grey"
                     android:textSize="12sp"
                     android:layout_marginTop="2dp" />
 
+                <!-- REKAP HADIR / ABSEN -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -81,16 +88,19 @@
                         android:layout_weight="1"
                         android:gravity="center"
                         android:orientation="vertical">
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Hadir"
                             android:textColor="#95A5A6"
                             android:textSize="12sp" />
+
                         <TextView
+                            android:id="@+id/tvTotalHadir"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="12"
+                            android:text="0"
                             android:textColor="@color/hijau_tua"
                             android:textSize="36sp"
                             android:textStyle="bold" />
@@ -107,13 +117,16 @@
                         android:layout_weight="1"
                         android:gravity="center"
                         android:orientation="vertical">
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Absen"
                             android:textColor="#95A5A6"
                             android:textSize="12sp" />
+
                         <TextView
+                            android:id="@+id/tvTotalAbsen"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="0"
@@ -125,6 +138,7 @@
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
+        <!-- LIST PERTEMUAN -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -146,9 +160,8 @@
                 android:id="@+id/rv_pertemuan"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                android:nestedScrollingEnabled="false" />
-
+                android:nestedScrollingEnabled="false"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
         </androidx.cardview.widget.CardView>
 
     </LinearLayout>

@@ -14,17 +14,15 @@ class RekapPresensiActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_rekap_presensi)
 
-        // Toolbar back
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         toolbar.setNavigationOnClickListener { finish() }
 
-        // TabLayout (REKAP AKTIF)
         val tabLayout = findViewById<TabLayout>(R.id.tabLayout)
-        tabLayout.getTabAt(1)?.select() // 🔥 REKAP HIJAU
+        tabLayout.getTabAt(1)?.select()
 
         tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab?) {
-                if (tab?.position == 0) { // Presensi GPS
+                if (tab?.position == 0) {
                     startActivity(Intent(this@RekapPresensiActivity, PresensiActivity::class.java))
                     overridePendingTransition(0, 0)
                     finish()

@@ -30,6 +30,7 @@ class MapsPresensiActivity : AppCompatActivity() {
 
     private lateinit var fusedLocationClient: FusedLocationProviderClient
 
+    // Lokasi Kampus & Parameter Radius
     private val kampusLat = -7.831423
     private val kampusLng = 110.381467
     private val radiusMeter = 200.0
@@ -51,6 +52,7 @@ class MapsPresensiActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        // Konfigurasi OSMDroid
         Configuration.getInstance().apply {
             userAgentValue = packageName
             osmdroidBasePath = filesDir
@@ -59,6 +61,7 @@ class MapsPresensiActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_maps_presensi)
 
+        // Inisialisasi View
         map = findViewById(R.id.map)
         txtTime = findViewById(R.id.txtTime)
         cardStatus = findViewById(R.id.cardStatus)
@@ -161,23 +164,29 @@ class MapsPresensiActivity : AppCompatActivity() {
     }
 
     private fun savePresensiToFirebase() {
-        val database = FirebaseDatabase.getInstance("https://japren-749fa-default-rtdb.asia-southeast1.firebasedatabase.app/")
+        val prefs = getSharedPreferences("USER_PREF", MODE_PRIVATE)
+        val namaUser = prefs.getString("NAMA", "Unknown User")
+
+        val database = FirebaseDatabase.getInstance(
+            "https://japren-749fa-default-rtdb.asia-southeast1.firebasedatabase.app/"
+        )
         val ref = database.getReference("presensi_log")
 
         val presensiBaru = Presensi(
-            userId = "user_wahyu", // Ganti dengan ID pengguna yang sebenarnya
+            userId = namaUser,
             status = "Hadir",
             timestamp = System.currentTimeMillis(),
-            date = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(Date())
+            date = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(Date()),
+            time = SimpleDateFormat("HH:mm", Locale.getDefault()).format(Date())
         )
 
         ref.push().setValue(presensiBaru)
             .addOnSuccessListener {
                 Toast.makeText(this, "Presensi Berhasil Disimpan!", Toast.LENGTH_SHORT).show()
-                finish() // Kembali ke PresensiActivity
+                finish()
             }
             .addOnFailureListener { e ->
-                Toast.makeText(this, "Gagal menyimpan presensi: ${e.message}", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, "Gagal: ${e.message}", Toast.LENGTH_LONG).show()
             }
     }
 
