@@ -51,6 +51,10 @@
             android:name=".ProfileActivity"
             android:exported="false" />
 
+        <activity
+            android:name=".DetailRekapPresensiActivity"
+            android:exported="false" />
+
     </application>
 
 </manifest>

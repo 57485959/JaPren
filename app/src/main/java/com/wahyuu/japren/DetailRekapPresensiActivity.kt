@@ -17,26 +17,29 @@ class DetailRekapPresensiActivity : AppCompatActivity() {
         val namaMatkul = intent.getStringExtra("nama") ?: "-"
         val kelas = intent.getStringExtra("kelas") ?: "-"
         val sks = intent.getIntExtra("sks", 0)
+        val namaDosen = intent.getStringExtra("dosen") ?: "-"
 
         findViewById<TextView>(R.id.tvNamaMatkul).text = namaMatkul
-        findViewById<TextView>(R.id.tvInfoMatkul).text =
-            "Kelas $kelas • $sks SKS"
+        findViewById<TextView>(R.id.tvInfoMatkul).text = "Kelas $kelas • $sks SKS"
 
         // ==== RECYCLERVIEW PRESENSI HARIAN ====
         val rv = findViewById<RecyclerView>(R.id.rv_pertemuan)
         rv.layoutManager = LinearLayoutManager(this)
 
         val listPresensi = mutableListOf<Presensi>()
-        val adapter = PresensiHarianAdapter(listPresensi)
+        val adapter = PresensiHarianAdapter(listPresensi, namaDosen)
         rv.adapter = adapter
 
-        // ==== FIREBASE ====
+        // ==== FIREBASE (SUDAH DIFILTER PER MATA KULIAH) ====
         val database = FirebaseDatabase.getInstance(
             "https://japren-749fa-default-rtdb.asia-southeast1.firebasedatabase.app/"
         )
         val ref = database.getReference("presensi_log")
 
-        ref.addValueEventListener(object : ValueEventListener {
+        // QUERY berdasarkan namaMatkul
+        val query = ref.orderByChild("namaMatkul").equalTo(namaMatkul)
+
+        query.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 listPresensi.clear()
 
@@ -53,7 +56,7 @@ class DetailRekapPresensiActivity : AppCompatActivity() {
                     }
                 }
 
-                // update rekap
+                // ==== UPDATE REKAP ====
                 findViewById<TextView>(R.id.tvTotalHadir).text = hadir.toString()
                 findViewById<TextView>(R.id.tvTotalAbsen).text = absen.toString()
 

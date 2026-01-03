@@ -68,10 +68,20 @@ class PresensiActivity : AppCompatActivity() {
             override fun onTabReselected(tab: TabLayout.Tab?) {}
         })
 
-        // Tombol ke MAP
         val btnPresensi = findViewById<MaterialButton>(R.id.btnPresensi)
         btnPresensi.setOnClickListener {
-            startActivity(android.content.Intent(this, MapsPresensiActivity::class.java))
+            val daftarMatkul = arrayOf("Dasar Pemrograman", "Logika Informatika")
+
+            val builder = androidx.appcompat.app.AlertDialog.Builder(this)
+            builder.setTitle("Pilih Mata Kuliah Hari Ini")
+            builder.setItems(daftarMatkul) { _, which ->
+                val matkulTerpilih = daftarMatkul[which]
+
+                val intent = Intent(this, MapsPresensiActivity::class.java)
+                intent.putExtra("EXTRA_MATKUL", matkulTerpilih)
+                startActivity(intent)
+            }
+            builder.show()
         }
     }
 }

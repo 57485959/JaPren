@@ -5,6 +5,7 @@ import com.google.firebase.database.IgnoreExtraProperties
 @IgnoreExtraProperties // Menghindari crash jika ada field tambahan di Firebase
 data class Presensi(
     var userId: String? = "",
+    var namaMatkul: String? = "",
     var status: String? = "",
     var timestamp: Long? = 0L,
     var date: String? = "",

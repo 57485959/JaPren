@@ -3,10 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:cardCornerRadius="16dp"
-    app:cardElevation="4dp"
-    app:cardUseCompatPadding="true"
-    android:layout_margin="8dp">
+    app:cardCornerRadius="12dp"
+    app:cardElevation="2dp"
+    app:cardUseCompatPadding="false"
+    android:layout_marginHorizontal="4dp"
+    android:layout_marginVertical="4dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -15,17 +16,16 @@
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
-        <!-- Nomor Pertemuan -->
         <TextView
             android:id="@+id/tvPertemuan"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:gravity="center"
             android:text="1"
             android:layout_marginEnd="12dp"
             android:textColor="#2C3E50"
             android:textStyle="bold"/>
 
-        <!-- Tanggal & Dosen -->
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -50,7 +50,6 @@
                 android:textSize="11sp" />
         </LinearLayout>
 
-        <!-- Status -->
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -74,7 +73,5 @@
                 android:textStyle="bold"
                 android:textSize="12sp" />
         </LinearLayout>
-
     </LinearLayout>
-
 </androidx.cardview.widget.CardView>

@@ -31,9 +31,9 @@ class MapsPresensiActivity : AppCompatActivity() {
     private lateinit var fusedLocationClient: FusedLocationProviderClient
 
     // Lokasi Kampus & Parameter Radius
-    private val kampusLat = -7.831423
-    private val kampusLng = 110.381467
-    private val radiusMeter = 200.0
+    private val kampusLat = -7.74175
+    private val kampusLng = 110.26378
+    private val radiusMeter = 500.0
     private var isInsideRadius = false
 
     private val handler = Handler(Looper.getMainLooper())
@@ -164,6 +164,10 @@ class MapsPresensiActivity : AppCompatActivity() {
     }
 
     private fun savePresensiToFirebase() {
+
+        // Ambil nama matkul dari Intent
+        val matkulDariIntent = intent.getStringExtra("EXTRA_MATKUL") ?: "Umum"
+
         val prefs = getSharedPreferences("USER_PREF", MODE_PRIVATE)
         val namaUser = prefs.getString("NAMA", "Unknown User")
 
@@ -174,6 +178,7 @@ class MapsPresensiActivity : AppCompatActivity() {
 
         val presensiBaru = Presensi(
             userId = namaUser,
+            namaMatkul = matkulDariIntent,   // ✅ tambahan
             status = "Hadir",
             timestamp = System.currentTimeMillis(),
             date = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(Date()),
@@ -182,13 +187,18 @@ class MapsPresensiActivity : AppCompatActivity() {
 
         ref.push().setValue(presensiBaru)
             .addOnSuccessListener {
-                Toast.makeText(this, "Presensi Berhasil Disimpan!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    this,
+                    "Presensi $matkulDariIntent Berhasil!",
+                    Toast.LENGTH_SHORT
+                ).show()
                 finish()
             }
             .addOnFailureListener { e ->
                 Toast.makeText(this, "Gagal: ${e.message}", Toast.LENGTH_LONG).show()
             }
     }
+
 
     private fun startClock() {
         handler.post(object : Runnable {

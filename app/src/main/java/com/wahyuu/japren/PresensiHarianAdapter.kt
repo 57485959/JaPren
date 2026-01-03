@@ -10,7 +10,8 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 class PresensiHarianAdapter(
-    private val list: List<Presensi>
+    private val list: List<Presensi>,
+    private val namaDosen: String
 ) : RecyclerView.Adapter<PresensiHarianAdapter.ViewHolder>() {
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -33,9 +34,9 @@ class PresensiHarianAdapter(
         val sdfWaktu = SimpleDateFormat("HH:mm", Locale("id", "ID"))
         val dateObj = Date(data.timestamp ?: 0L)
 
-        holder.tvPertemuan.text = "Pertemuan ${position + 1}"
+        holder.tvPertemuan.text = "${position + 1}"
         holder.tvTanggal.text = "${sdfTanggal.format(dateObj)} (${sdfWaktu.format(dateObj)} WIB)"
-        holder.tvDosen.text = "User ID: ${data.userId}"
+        holder.tvDosen.text = namaDosen
 
         holder.tvStatus.text = data.status
 
