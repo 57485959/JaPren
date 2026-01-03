@@ -1,6 +1,7 @@
 package com.wahyuu.japren
 
 import android.os.Bundle
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -13,6 +14,11 @@ class DetailRekapPresensiActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.item_detail_rekap_presensi_matkul)
 
+        val btnBack = findViewById<ImageView>(R.id.btnBack)
+        btnBack.setOnClickListener {
+            finish()
+        }
+
         // ==== AMBIL DATA MATKUL DARI INTENT ====
         val namaMatkul = intent.getStringExtra("nama") ?: "-"
         val kelas = intent.getStringExtra("kelas") ?: "-"
@@ -20,7 +26,7 @@ class DetailRekapPresensiActivity : AppCompatActivity() {
         val namaDosen = intent.getStringExtra("dosen") ?: "-"
 
         findViewById<TextView>(R.id.tvNamaMatkul).text = namaMatkul
-        findViewById<TextView>(R.id.tvInfoMatkul).text = "$kelas • $sks"
+        findViewById<TextView>(R.id.tvInfoMatkul).text = "Kelas $kelas • $sks SKS    "
 
         // ==== RECYCLERVIEW PRESENSI HARIAN ====
         val rv = findViewById<RecyclerView>(R.id.rv_pertemuan)
