@@ -37,22 +37,29 @@ class PresensiActivity : AppCompatActivity() {
         )
         val ref = database.getReference("presensi_log")
 
-        ref.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                listPresensi.clear()
-                for (data in snapshot.children) {
-                    val presensi = data.getValue(Presensi::class.java)
-                    if (presensi != null) {
-                        listPresensi.add(presensi)
-                    }
-                }
-                adapter.notifyDataSetChanged()
-            }
+        val nimLogin = getSharedPreferences("USER_PREF", MODE_PRIVATE).getString("NIM", "")
 
-            override fun onCancelled(error: DatabaseError) {
-                Toast.makeText(this@PresensiActivity, "Gagal ambil data", Toast.LENGTH_SHORT).show()
-            }
-        })
+        ref.orderByChild("userId").equalTo(nimLogin)
+            .addValueEventListener(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    listPresensi.clear()
+                    for (data in snapshot.children) {
+                        val presensi = data.getValue(Presensi::class.java)
+                        if (presensi != null) {
+                            listPresensi.add(presensi)
+                        }
+                    }
+                    adapter.notifyDataSetChanged()
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    Toast.makeText(
+                        this@PresensiActivity,
+                        "Gagal ambil data",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            })
 
         // Tambahkan ini di bawah inisialisasi TabLayout di PresensiActivity.kt
         val tabLayout = findViewById<TabLayout>(R.id.tabLayout)

@@ -169,7 +169,7 @@ class MapsPresensiActivity : AppCompatActivity() {
         val matkulDariIntent = intent.getStringExtra("EXTRA_MATKUL") ?: "Umum"
 
         val prefs = getSharedPreferences("USER_PREF", MODE_PRIVATE)
-        val namaUser = prefs.getString("NAMA", "Unknown User")
+        val nimUser = prefs.getString("NIM", "00000000")
 
         val database = FirebaseDatabase.getInstance(
             "https://japren-749fa-default-rtdb.asia-southeast1.firebasedatabase.app/"
@@ -177,7 +177,7 @@ class MapsPresensiActivity : AppCompatActivity() {
         val ref = database.getReference("presensi_log")
 
         val presensiBaru = Presensi(
-            userId = namaUser,
+            userId = nimUser,
             namaMatkul = matkulDariIntent,   // ✅ tambahan
             status = "Hadir",
             timestamp = System.currentTimeMillis(),
@@ -198,7 +198,6 @@ class MapsPresensiActivity : AppCompatActivity() {
                 Toast.makeText(this, "Gagal: ${e.message}", Toast.LENGTH_LONG).show()
             }
     }
-
 
     private fun startClock() {
         handler.post(object : Runnable {

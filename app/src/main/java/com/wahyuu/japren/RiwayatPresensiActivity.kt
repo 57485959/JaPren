@@ -19,22 +19,25 @@ class RiwayatPresensiActivity : AppCompatActivity() {
         )
         val ref = database.getReference("presensi_log")
 
-        ref.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                for (data in snapshot.children) {
-                    val presensi = data.getValue(Presensi::class.java)
-                    // TAMPILKAN KE RECYCLERVIEW
-                    Log.d("PRESENSI", presensi.toString())
-                }
-            }
+        val nimLogin = getSharedPreferences("USER_PREF", MODE_PRIVATE).getString("NIM", "")
 
-            override fun onCancelled(error: DatabaseError) {
-                Toast.makeText(
-                    this@RiwayatPresensiActivity,
-                    "Gagal ambil data",
-                    Toast.LENGTH_SHORT
-                ).show()
-            }
-        })
+        ref.orderByChild("userId").equalTo(nimLogin)
+            .addValueEventListener(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    for (data in snapshot.children) {
+                        val presensi = data.getValue(Presensi::class.java)
+                        Log.d("PRESENSI", presensi.toString())
+                        // TAMPILKAN KE RECYCLERVIEW (jika ada)
+                    }
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    Toast.makeText(
+                        this@RiwayatPresensiActivity,
+                        "Gagal ambil data",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            })
     }
 }

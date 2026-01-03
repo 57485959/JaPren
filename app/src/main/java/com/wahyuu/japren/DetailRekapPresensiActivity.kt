@@ -20,7 +20,7 @@ class DetailRekapPresensiActivity : AppCompatActivity() {
         val namaDosen = intent.getStringExtra("dosen") ?: "-"
 
         findViewById<TextView>(R.id.tvNamaMatkul).text = namaMatkul
-        findViewById<TextView>(R.id.tvInfoMatkul).text = "Kelas $kelas • $sks SKS"
+        findViewById<TextView>(R.id.tvInfoMatkul).text = "$kelas • $sks"
 
         // ==== RECYCLERVIEW PRESENSI HARIAN ====
         val rv = findViewById<RecyclerView>(R.id.rv_pertemuan)
@@ -30,7 +30,11 @@ class DetailRekapPresensiActivity : AppCompatActivity() {
         val adapter = PresensiHarianAdapter(listPresensi, namaDosen)
         rv.adapter = adapter
 
-        // ==== FIREBASE (SUDAH DIFILTER PER MATA KULIAH) ====
+        // ==== AMBIL NIM USER YANG LOGIN ====
+        val prefs = getSharedPreferences("USER_PREF", MODE_PRIVATE)
+        val nimLogin = prefs.getString("NIM", "")
+
+        // ==== FIREBASE ====
         val database = FirebaseDatabase.getInstance(
             "https://japren-749fa-default-rtdb.asia-southeast1.firebasedatabase.app/"
         )
@@ -48,7 +52,7 @@ class DetailRekapPresensiActivity : AppCompatActivity() {
 
                 for (data in snapshot.children) {
                     val presensi = data.getValue(Presensi::class.java)
-                    if (presensi != null) {
+                    if (presensi != null && presensi.userId == nimLogin) {
                         listPresensi.add(presensi)
 
                         if (presensi.status == "Hadir") hadir++
